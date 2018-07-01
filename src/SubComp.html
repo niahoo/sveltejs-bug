@@ -1,0 +1,13 @@
+<svelte:window on:keyup="onkeyup(event)"/>
+
+<script>
+  export default {
+    methods: {
+      onkeyup(event) {
+        const { key, keyCode } = event
+        console.log('keyup key="%s keyCode=%s', key, keyCode)
+        this.fire('keyup', event)
+      }
+    }
+  }
+</script>

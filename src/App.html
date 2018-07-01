@@ -1,0 +1,29 @@
+<div>
+    <p>Last event : "{keyName}" at {lastDate.getTime()} </p>
+    <SubComp on:keyup="onkeyup(event)"/>
+</div>
+
+<style>
+	h1 {
+		color: purple;
+	}
+</style>
+
+<script>
+    import SubComp from './SubComp.html'
+    export default {
+        components: { SubComp },
+        data() {
+            return {keyName: 'init', lastDate: new Date}
+        },
+        methods: {
+            onkeyup({ key }) {
+                console.log('pushed key %s', key)
+                if (key === 'ArrowLeft') {
+                    this.thisWillFail()
+                }
+                this.set({ keyName: key, lastDate: new Date})
+            },
+        }
+    }
+</script>
